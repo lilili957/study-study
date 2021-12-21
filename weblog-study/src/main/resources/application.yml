@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: weblog-study
+
+logging:
+  level:
+    com.lilili: debug

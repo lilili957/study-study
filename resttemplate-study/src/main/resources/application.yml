@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: rest-template-study
+
+server:
+  port: 8002
