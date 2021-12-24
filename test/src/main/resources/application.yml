@@ -1,0 +1,7 @@
+
+student:
+  name: lilili
+  password: 123456
+
+server:
+  port: 9000

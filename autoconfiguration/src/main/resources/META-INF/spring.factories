@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.lilili.model.Student,\
+  com.lilili.model.Clzss
