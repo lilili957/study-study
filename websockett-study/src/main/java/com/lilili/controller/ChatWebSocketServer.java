@@ -36,7 +36,7 @@ public class ChatWebSocketServer {
         if (!StringUtils.hasText(username)) {
             throw new IllegalArgumentException("username不能为空");
         }
-        sessionMap.put("username", session);
+        sessionMap.put(username, session);
         int count = onlineCount.incrementAndGet();
         log.info("[{}]登陆了， 当前在线人数{}", username, count);
 

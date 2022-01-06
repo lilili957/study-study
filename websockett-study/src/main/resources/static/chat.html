@@ -62,7 +62,8 @@
         }
 
         socket.onmessage = function (msg) {
-            let data = msg.data;
+            console.log(msg);
+            let data = JSON.parse(msg.data);
             $("#messageId").append("[" + data.from + "]" + data.message + "\n");
         }
 
@@ -88,7 +89,7 @@
         socket.send(JSON.stringify(message));
         //在textarea上记录
         $("#messageId").css("text-align", "right");
-        $("#messageId").append(message + "[" + username + "]" + "\n");
+        $("#messageId").append(sendMessage + "[" + username + "]" + "\n");
     }
 
     // if (typeof (WebSocket) == "undefined") {
