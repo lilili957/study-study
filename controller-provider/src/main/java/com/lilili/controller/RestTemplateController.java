@@ -3,6 +3,12 @@ package com.lilili.controller;
 import com.lilili.model.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * @Author LiYuan
@@ -68,4 +74,17 @@ public class RestTemplateController {
         return "post请求返回结果";
     }
 
+    /**
+     * 测试在拼接参数传递的时候，request和session中是否都存在。
+     */
+    @GetMapping("/testSessionAndRequestValue")
+    public String testSessionAndRequestValue(String username) {
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest request = requestAttributes.getRequest();
+        String un = request.getParameter("username");
+        HttpSession session = request.getSession();
+        log.info("un = {}", un);
+        return "请求成功";
+
+    }
 }

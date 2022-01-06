@@ -4,8 +4,8 @@
     <title>websocket测试</title>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <style type="text/css">
-        h3,h4{
-            text-align:center;
+        h3, h4 {
+            text-align: center;
         }
     </style>
 </head>
@@ -13,7 +13,7 @@
 
 <h3>WebSocket测试，客户端接收到的消息如下：</h3>
 
-<textarea id = "messageId" readonly="readonly" cols="150" rows="30" >
+<textarea id="messageId" readonly="readonly" cols="150" rows="30">
 
 </textarea>
 
@@ -29,30 +29,36 @@
         //注意ws、wss使用不同的端口。我使用自签名的证书测试，
         //无法使用wss，浏览器打开WebSocket时报错
         //ws对应http、wss对应https。
-        socket = new WebSocket("ws://localhost:8080/ws/asset");
+        socket = new WebSocket("ws://localhost:8080/ws/asset?username=lilili");
         //连接打开事件
-        socket.onopen = function() {
+        socket.onopen = function () {
             console.log("Socket 已打开");
             socket.send("消息发送测试(From Client)");
         };
+
         //收到消息事件
-        socket.onmessage = function(msg) {
-            $("#messageId").append(msg.data+ "\n");
-            console.log(msg.data  );
+        socket.onmessage = function (msg) {
+            $("#messageId").append(msg.data + "\n");
+            console.log(msg.data);
         };
         //连接关闭事件
-        socket.onclose = function() {
+        socket.onclose = function () {
             console.log("Socket已关闭");
         };
         //发生了错误事件
-        socket.onerror = function() {
+        socket.onerror = function () {
             alert("Socket发生了错误");
         }
+
         //窗口关闭时，关闭连接
-        window.unload=function() {
+        window.unload = function () {
             socket.close();
         };
+        console.log('else end');
     }
+    setTimeout(() => {
+        socket.send("测试send方法");
+    }, 3000);
 </script>
 
 </body>
