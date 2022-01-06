@@ -4,8 +4,6 @@ import com.lilili.model.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 /**
  * @Author LiYuan
  * @Date 2021/11/3
@@ -47,4 +45,27 @@ public class RestTemplateController {
         student.setNickName(nickName + "957");
         return student;
     }
+
+    /**
+     *
+     * params相当于一个conditions， 去定义请求的时候需要携带或不能携带什么样的参数
+     * params = {"name", "!nickName"}，要求请求的时候必须携带key为name的参数，并且不能携带nickName的参数。
+     * @param name
+     * @return
+     */
+    @GetMapping(value = "/testParams", params = {"name", "!nickName"})
+    public String testParams(String name, String nickName) {
+        log.info("测试成功!");
+        return "测试成功";
+    }
+
+    /**
+     * 测试HttpURLConnection的Post请求
+     */
+    @PostMapping("/testURLConnection")
+    public String testURLConnection(@RequestBody String request) {
+        log.info("request:" + request);
+        return "post请求返回结果";
+    }
+
 }

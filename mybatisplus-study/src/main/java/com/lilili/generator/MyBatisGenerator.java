@@ -22,7 +22,7 @@ public class MyBatisGenerator {
 
         // 2、全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("D:\\generate");
+        gc.setOutputDir("D:\\JavaProject\\mqh5svr\\src\\main\\java\\com\\simt\\mqh5svr");
         gc.setAuthor("liyuan");
         gc.setOpen(false); //生成后是否打开资源管理器
         gc.setFileOverride(false); //重新生成时文件是否覆盖
